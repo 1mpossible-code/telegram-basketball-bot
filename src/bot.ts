@@ -1,1 +1,3 @@
-console.log('Hello world!');
+export default (): string => {
+  return 'Hello World!';
+};
