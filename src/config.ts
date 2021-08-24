@@ -13,8 +13,10 @@ export const config: IConfig = {
   dbURI: process.env.DB_URI
 };
 
-for (const [k, v] of Object.entries(config)) {
-  if (v === undefined) {
-    throw new Error(`${k} must be provided!`);
+export const validate = (config: IConfig): void => {
+  for (const [k, v] of Object.entries(config)) {
+    if (v === undefined) {
+      throw new Error(`${k} must be provided!`);
+    }
   }
-}
+};
