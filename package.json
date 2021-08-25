@@ -5,11 +5,10 @@
   "main": "src/bot.ts",
   "scripts": {
     "test": "jest --coverage",
-    "dev": "nodemon",
-    "build": "rimraf ./build && tsc",
+    "dev": "node node_modules/nodemon/bin/nodemon.js",
+    "build": "node node_modules/rimraf/rimraf.js ./build && node node_modules/typescript/bin/tsc",
     "start": "npm run build && node build/bot.js",
-    "lint": "eslint . --ext .ts --fix",
-    "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "lint": "eslint . --ext .ts --fix"
   },
   "keywords": [],
   "author": "",
