@@ -1,19 +1,14 @@
-import {config, validate} from './config';
+import Config from './Config';
 
-it('should have token', function () {
-  expect(config.token).toBeTruthy();
+it('should have BOT_TOKEN', function () {
+  expect(Config.get('BOT_TOKEN')).toBeTruthy();
 });
 
-it('should have dbURI', function () {
-  expect(config.dbURI).toBeTruthy();
+it('should have DB_URI', function () {
+  expect(Config.get('DB_URI')).toBeTruthy();
 });
 
-it('should not throw an error', function () {
-  expect(() => validate(config)).not.toThrowError();
-});
-
-it('should throw an error without token', function () {
-  const configCopy = {...config, token: undefined};
-  const errMsg = 'token must be provided!';
-  expect(() => validate(configCopy)).toThrowError(errMsg);
+it('should throw an error if nonExistingValue is requested', function () {
+  const key = 'nonExistingValue';
+  expect(() => Config.get(key)).toThrowError(`${key} must be provided!`);
 });
