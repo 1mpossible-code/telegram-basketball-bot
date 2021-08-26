@@ -1,10 +1,11 @@
 import winston from 'winston';
+import Config from '../Config';
 
 const logger = winston.createLogger({
-    level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+    level: Config.get('NODE_ENV') === 'production' ? 'info' : 'debug',
     transports: [
-        new winston.transports.Console({format: winston.format.simple()})
-    ]
+        new winston.transports.Console({format: winston.format.simple()}),
+    ],
 });
 
 export default logger;
