@@ -1,14 +1,12 @@
 import Config from './Config';
 
-it('should have BOT_TOKEN', function () {
-    expect(Config.get('BOT_TOKEN')).toBeTruthy();
-});
-
-it('should have DB_URI', function () {
-    expect(Config.get('DB_URI')).toBeTruthy();
+it('should have variables from "process.env"', function () {
+    process.env.variable = 'some var';
+    expect(Config.get('variable')).toBe('some var');
 });
 
 it('should throw an error if nonExistingValue is requested', function () {
     const key = 'nonExistingValue';
+    process.env[key] = '';
     expect(() => Config.get(key)).toThrowError(`${key} must be provided!`);
 });
