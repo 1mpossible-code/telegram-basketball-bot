@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "dev": "node node_modules/nodemon/bin/nodemon.js",
-    "build": "node node_modules/rimraf/rimraf.js ./build && node node_modules/typescript/bin/tsc",
+    "build": "node node_modules/rimraf/bin.js ./build && node node_modules/typescript/bin/tsc",
     "start": "npm run build && node build/bot.js",
     "lint": "eslint . --ext .ts --fix",
     "prepare": "husky install"
