@@ -17,7 +17,11 @@ export class BotController {
         return this.instance;
     }
 
-    static startCommandHandler(ctx: Context): void {
+    public static startCommandHandler(ctx: Context): void {
         BotController.getInstance().state.startCommandHandler(ctx);
+    }
+
+    public static changeState(state: BotState): void {
+        BotController.getInstance().state = state;
     }
 }
