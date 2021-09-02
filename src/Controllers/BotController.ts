@@ -1,13 +1,13 @@
 import {Context} from 'telegraf';
-import {BotEnter} from './States/BotEnter';
 import {BotState} from './States/BotState';
+import {BotPending} from './States/BotPending';
 
 export class BotController {
     public state: BotState;
     public static instance: BotController;
 
     constructor() {
-        this.state = new BotEnter();
+        this.state = new BotPending();
     }
 
     public static getInstance(): BotController {
