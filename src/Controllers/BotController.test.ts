@@ -7,14 +7,20 @@ describe('test BotController', () => {
     // @ts-ignore
     const ctx = new Context({message: {chat: 123}}, tg, {});
 
-    it('should call ctx reply', () => {
+    it('should call ctx reply and change states', () => {
         ctx.reply = jest.fn().mockResolvedValue(null);
+        // After each call the Pending state will be changed into Enter one
+        // so we need to test each situation
         BotController.startCommandHandler(ctx);
-        expect(ctx.reply).toHaveBeenCalledWith('Hello!');
+        expect(ctx.reply).toHaveBeenCalledWith('BotPending');
+        BotController.startCommandHandler(ctx);
+        expect(ctx.reply).toHaveBeenCalledWith('BotEnter');
     });
 
-    it('should throw an error', () => {
+    it('should not throw an error', () => {
         ctx.reply = jest.fn().mockRejectedValue('error');
+        // After each call the Pending state will be changed into Enter one
+        expect(() => BotController.startCommandHandler(ctx)).not.toThrowError();
         expect(() => BotController.startCommandHandler(ctx)).not.toThrowError();
     });
 });
