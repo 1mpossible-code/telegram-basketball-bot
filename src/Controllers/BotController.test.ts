@@ -15,11 +15,14 @@ describe('test BotController', () => {
         expect(ctx.reply).toHaveBeenCalledWith('BotPending');
         BotController.startCommandHandler(ctx);
         expect(ctx.reply).toHaveBeenCalledWith('BotEnter');
+        BotController.startCommandHandler(ctx);
+        expect(ctx.reply).toHaveBeenCalledWith('BotGame');
     });
 
     it('should not throw an error', () => {
         ctx.reply = jest.fn().mockRejectedValue('error');
         // After each call the Pending state will be changed into Enter one
+        expect(() => BotController.startCommandHandler(ctx)).not.toThrowError();
         expect(() => BotController.startCommandHandler(ctx)).not.toThrowError();
         expect(() => BotController.startCommandHandler(ctx)).not.toThrowError();
     });
