@@ -9,4 +9,8 @@ export class BotPending implements BotState {
         ctx.reply('BotPending').catch((e) => logger.error(e));
         BotController.changeState(new BotEnter());
     }
+
+    diceHandler(ctx: Context): void {
+        logger.info(`${ctx?.from?.first_name} called dice handler: BotPending`);
+    }
 }
