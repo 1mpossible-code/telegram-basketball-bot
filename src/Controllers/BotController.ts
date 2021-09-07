@@ -21,6 +21,10 @@ export class BotController {
         BotController.getInstance().state.startCommandHandler(ctx);
     }
 
+    public static diceHandler(ctx: Context): void {
+        BotController.getInstance().state.startCommandHandler(ctx);
+    }
+
     public static changeState(state: BotState): void {
         BotController.getInstance().state = state;
     }
