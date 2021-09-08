@@ -11,6 +11,6 @@ export class BotEnter implements BotState {
     }
 
     diceHandler(ctx: Context): void {
-        logger.info(`${ctx?.from?.first_name} called dice handler: BotEnter`);
+        logger.info("BotEnter's 'diceHandler' is called");
     }
 }

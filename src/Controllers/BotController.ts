@@ -22,7 +22,7 @@ export class BotController {
     }
 
     public static diceHandler(ctx: Context): void {
-        BotController.getInstance().state.startCommandHandler(ctx);
+        BotController.getInstance().state.diceHandler(ctx);
     }
 
     public static changeState(state: BotState): void {
