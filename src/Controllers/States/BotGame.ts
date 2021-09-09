@@ -13,4 +13,8 @@ export class BotGame implements BotState {
     diceHandler(ctx: Context): void {
         logger.info("BotGame's 'diceHandler' is called");
     }
+
+    commonMessageHandler(ctx: Context): void {
+        logger.info('Message handler');
+    }
 }

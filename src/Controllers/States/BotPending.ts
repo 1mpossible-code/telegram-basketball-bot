@@ -13,4 +13,8 @@ export class BotPending implements BotState {
     diceHandler(ctx: Context): void {
         logger.info("BotPending's 'diceHandler' is called");
     }
+
+    commonMessageHandler(ctx: Context): void {
+        logger.info('Message handler');
+    }
 }

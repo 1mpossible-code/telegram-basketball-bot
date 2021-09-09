@@ -7,5 +7,6 @@ const composer = new Composer();
 composer.start(BotController.startCommandHandler);
 // Handling dice
 composer.on('dice', BotController.diceHandler);
+composer.on('message', BotController.commonMessageHandler);
 
 export default composer;

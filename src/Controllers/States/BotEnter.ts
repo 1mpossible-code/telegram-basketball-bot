@@ -13,4 +13,8 @@ export class BotEnter implements BotState {
     diceHandler(ctx: Context): void {
         logger.info("BotEnter's 'diceHandler' is called");
     }
+
+    commonMessageHandler(ctx: Context): void {
+        logger.info('Message handler');
+    }
 }

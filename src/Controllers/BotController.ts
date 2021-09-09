@@ -25,6 +25,10 @@ export class BotController {
         BotController.getInstance().state.diceHandler(ctx);
     }
 
+    public static commonMessageHandler(ctx: Context): void {
+        BotController.getInstance().state.commonMessageHandler(ctx);
+    }
+
     public static changeState(state: BotState): void {
         BotController.getInstance().state = state;
     }
