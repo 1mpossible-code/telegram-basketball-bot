@@ -82,4 +82,18 @@ describe('test BotController', () => {
             "BotGame's 'diceHandler' is called"
         );
     });
+
+    it('should call logger when common message handler is called', () => {
+        BotController.changeState(new BotPending());
+        BotController.commonMessageHandler(ctx);
+        expect(logger.info).toHaveBeenCalledWith('Message handler');
+
+        BotController.changeState(new BotEnter());
+        BotController.commonMessageHandler(ctx);
+        expect(logger.info).toHaveBeenCalledWith('Message handler');
+
+        BotController.changeState(new BotGame());
+        BotController.commonMessageHandler(ctx);
+        expect(logger.info).toHaveBeenCalledWith('Message handler');
+    });
 });
