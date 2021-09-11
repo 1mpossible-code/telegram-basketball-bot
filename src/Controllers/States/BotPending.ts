@@ -17,4 +17,8 @@ export class BotPending implements BotState {
     commonMessageHandler(ctx: Context): void {
         logger.info('Message handler');
     }
+
+    exitCommandHandler(ctx: Context): void {
+        logger.info('Exit command handler');
+    }
 }

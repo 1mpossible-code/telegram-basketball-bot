@@ -29,6 +29,10 @@ export class BotController {
         BotController.getInstance().state.commonMessageHandler(ctx);
     }
 
+    public static exitCommandHandler(ctx: Context): void {
+        BotController.getInstance().state.exitCommandHandler(ctx);
+    }
+
     public static changeState(state: BotState): void {
         BotController.getInstance().state = state;
     }

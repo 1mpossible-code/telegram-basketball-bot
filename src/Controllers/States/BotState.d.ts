@@ -6,4 +6,6 @@ export interface BotState {
     diceHandler(ctx: Context): void;
 
     commonMessageHandler(ctx: Context): void;
+
+    exitCommandHandler(ctx: Context): void;
 }
