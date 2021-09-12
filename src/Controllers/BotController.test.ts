@@ -96,4 +96,18 @@ describe('test BotController', () => {
         BotController.commonMessageHandler(ctx);
         expect(logger.info).toHaveBeenCalledWith('Message handler');
     });
+
+    it("should call logger when 'exit' command is called", () => {
+        BotController.changeState(new BotPending());
+        BotController.exitCommandHandler(ctx);
+        expect(logger.info).toHaveBeenCalledWith('Exit command handler');
+
+        BotController.changeState(new BotEnter());
+        BotController.exitCommandHandler(ctx);
+        expect(logger.info).toHaveBeenCalledWith('Exit command handler');
+
+        BotController.changeState(new BotGame());
+        BotController.exitCommandHandler(ctx);
+        expect(logger.info).toHaveBeenCalledWith('Exit command handler');
+    });
 });
