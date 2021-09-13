@@ -11,5 +11,6 @@ composer.command('exit', BotController.exitCommandHandler);
 composer.on('dice', BotController.diceHandler);
 // Handling common messages
 composer.on('message', BotController.commonMessageHandler);
+composer.on('callback_query', BotController.callbackQueryHandler);
 
 export default composer;

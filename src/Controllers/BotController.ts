@@ -33,6 +33,10 @@ export class BotController {
         BotController.getInstance().state.exitCommandHandler(ctx);
     }
 
+    public static callbackQueryHandler(ctx: Context): void {
+        BotController.getInstance().state.callbackQueryHandler(ctx);
+    }
+
     public static changeState(state: BotState): void {
         BotController.getInstance().state = state;
     }

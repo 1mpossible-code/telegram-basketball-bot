@@ -8,4 +8,6 @@ export interface BotState {
     commonMessageHandler(ctx: Context): void;
 
     exitCommandHandler(ctx: Context): void;
+
+    callbackQueryHandler(ctx: Context): void;
 }

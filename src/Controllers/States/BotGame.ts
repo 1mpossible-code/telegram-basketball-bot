@@ -21,4 +21,8 @@ export class BotGame implements BotState {
     exitCommandHandler(ctx: Context): void {
         logger.info('Exit command handler');
     }
+
+    callbackQueryHandler(ctx: Context): void {
+        logger.info('Callback query handler');
+    }
 }
