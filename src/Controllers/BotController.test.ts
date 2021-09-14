@@ -110,4 +110,18 @@ describe('test BotController', () => {
         BotController.exitCommandHandler(ctx);
         expect(logger.info).toHaveBeenCalledWith('Exit command handler');
     });
+
+    it('should call logger when callback query is called', () => {
+        BotController.changeState(new BotPending());
+        BotController.callbackQueryHandler(ctx);
+        expect(logger.info).toHaveBeenCalledWith('Callback query handler');
+
+        BotController.changeState(new BotEnter());
+        BotController.callbackQueryHandler(ctx);
+        expect(logger.info).toHaveBeenCalledWith('Callback query handler');
+
+        BotController.changeState(new BotGame());
+        BotController.callbackQueryHandler(ctx);
+        expect(logger.info).toHaveBeenCalledWith('Callback query handler');
+    });
 });
