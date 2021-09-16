@@ -1,3 +1,5 @@
+jest.unmock('winston');
+
 beforeEach(() => {
     jest.resetModules();
 });

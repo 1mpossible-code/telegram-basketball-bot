@@ -5,27 +5,7 @@ import {BotEnter} from './States/BotEnter';
 import {BotGame} from './States/BotGame';
 import logger from '../Util/logger';
 
-jest.mock('winston', () => {
-    const mFormat = {
-        combine: jest.fn(),
-        timestamp: jest.fn(),
-        printf: jest.fn(),
-        simple: jest.fn(),
-    };
-    const mTransports = {
-        Console: jest.fn(),
-        File: jest.fn(),
-    };
-    const mLogger = {
-        info: jest.fn(),
-        error: jest.fn(),
-    };
-    return {
-        format: mFormat,
-        transports: mTransports,
-        createLogger: jest.fn(() => mLogger),
-    };
-});
+jest.mock('winston');
 
 describe('test BotController', () => {
     const tg = new Telegram('123');
