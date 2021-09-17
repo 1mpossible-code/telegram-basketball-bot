@@ -1,4 +1,23 @@
-const winston = jest.createMockFromModule('winston');
+interface IWinstonMock {
+    format: {
+        combine(): void;
+        timestamp(): void;
+        printf(): void;
+        simple(): void;
+    };
+
+    transports: {
+        Console(): void;
+        File(): void;
+    };
+
+    createLogger(): {
+        info(): void;
+        error(): void;
+    };
+}
+
+const winston: IWinstonMock = jest.createMockFromModule('winston');
 
 const mFormat = {
     combine: jest.fn(),
@@ -15,14 +34,8 @@ const mLogger = {
     error: jest.fn(),
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 winston.format = mFormat;
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 winston.transports = mTransports;
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 winston.createLogger = jest.fn(() => mLogger);
 
 export default winston;
