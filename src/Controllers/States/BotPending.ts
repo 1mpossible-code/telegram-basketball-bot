@@ -3,10 +3,15 @@ import {Context} from 'telegraf';
 import logger from '../../Util/logger';
 import {BotController} from '../BotController';
 import {BotEnter} from './BotEnter';
+import {PendingService} from '../../Services/PendingService';
 
 export class BotPending implements BotState {
     startCommandHandler(ctx: Context): void {
-        ctx.reply('BotPending').catch((e) => logger.error(e));
+        ctx.reply(
+            'If you want to play, just click "Join" button',
+            PendingService.getStartCommandMarkup()
+        ).catch((e) => logger.error(e));
+
         BotController.changeState(new BotEnter());
     }
 
