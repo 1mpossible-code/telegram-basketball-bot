@@ -5,9 +5,14 @@ import {BotController} from '../BotController';
 import {BotPending} from './BotPending';
 
 export class BotGame implements BotState {
+    readonly _controller: BotController;
+
+    constructor(controller: BotController) {
+        this._controller = controller;
+    }
+
     startCommandHandler(ctx: Context): void {
         ctx.reply('BotGame').catch((e) => logger.error(e));
-        BotController.changeState(new BotPending());
     }
 
     diceHandler(ctx: Context): void {

@@ -2,12 +2,17 @@ import {BotState} from './BotState';
 import {Context} from 'telegraf';
 import logger from '../../Util/logger';
 import {BotController} from '../BotController';
-import {BotGame} from './BotGame';
+import {BotPending} from './BotPending';
 
 export class BotEnter implements BotState {
+    readonly _controller: BotController;
+
+    constructor(controller: BotController) {
+        this._controller = controller;
+    }
+
     startCommandHandler(ctx: Context): void {
         ctx.reply('BotEnter').catch((e) => logger.error(e));
-        BotController.changeState(new BotGame());
     }
 
     diceHandler(ctx: Context): void {

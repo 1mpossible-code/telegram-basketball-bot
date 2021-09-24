@@ -6,13 +6,18 @@ import {BotEnter} from './BotEnter';
 import {PendingService} from '../../Services/PendingService';
 
 export class BotPending implements BotState {
+    readonly _controller: BotController;
+
+    constructor(controller: BotController) {
+        this._controller = controller;
+    }
+
     startCommandHandler(ctx: Context): void {
         ctx.reply(
             'If you want to play, just click "Join" button',
             PendingService.getStartCommandMarkup()
         ).catch((e) => logger.error(e));
-
-        BotController.changeState(new BotEnter());
+        this._controller.changeState(this._controller.gameState);
     }
 
     diceHandler(ctx: Context): void {

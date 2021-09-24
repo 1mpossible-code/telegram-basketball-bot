@@ -1,13 +1,23 @@
 import {Context} from 'telegraf';
 import {BotState} from './States/BotState';
 import {BotPending} from './States/BotPending';
+import {BotEnter} from './States/BotEnter';
+import {BotGame} from './States/BotGame';
 
 export class BotController {
-    public state: BotState;
-    public static instance: BotController;
+    private state: BotState;
+    private static instance: BotController;
 
-    constructor() {
-        this.state = new BotPending();
+    public pendingState: BotState;
+    public enterState: BotState;
+    public gameState: BotState;
+
+    private constructor() {
+        this.pendingState = new BotPending(this);
+        this.enterState = new BotEnter(this);
+        this.gameState = new BotGame(this);
+
+        this.state = this.pendingState;
     }
 
     public static getInstance(): BotController {
@@ -37,7 +47,7 @@ export class BotController {
         BotController.getInstance().state.callbackQueryHandler(ctx);
     }
 
-    public static changeState(state: BotState): void {
-        BotController.getInstance().state = state;
+    public changeState(state: BotState): void {
+        this.state = state;
     }
 }
