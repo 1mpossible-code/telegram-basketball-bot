@@ -28,23 +28,27 @@ export class BotController {
     }
 
     public static startCommandHandler(ctx: Context): void {
-        BotController.getInstance().state.startCommandHandler(ctx);
+        BotController.getState().startCommandHandler(ctx);
     }
 
     public static diceHandler(ctx: Context): void {
-        BotController.getInstance().state.diceHandler(ctx);
+        BotController.getState().diceHandler(ctx);
     }
 
     public static commonMessageHandler(ctx: Context): void {
-        BotController.getInstance().state.commonMessageHandler(ctx);
+        BotController.getState().commonMessageHandler(ctx);
     }
 
     public static exitCommandHandler(ctx: Context): void {
-        BotController.getInstance().state.exitCommandHandler(ctx);
+        BotController.getState().exitCommandHandler(ctx);
     }
 
     public static callbackQueryHandler(ctx: Context): void {
-        BotController.getInstance().state.callbackQueryHandler(ctx);
+        BotController.getState().callbackQueryHandler(ctx);
+    }
+
+    private static getState(): BotState {
+        return BotController.getInstance().state;
     }
 
     public changeState(state: BotState): void {
