@@ -1,12 +1,9 @@
-import {Context, Telegram} from 'telegraf';
+import {getTestContext} from '../mocks/context';
 
 jest.mock('winston');
 
 describe('test BotController', () => {
-    const tg = new Telegram('123');
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const ctx = new Context({message: {chat: 123}}, tg, {});
+    const ctx = getTestContext();
 
     beforeEach(() => {
         jest.resetModules();
