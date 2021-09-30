@@ -20,5 +20,8 @@
     "build",
     "coverage",
     "src/**/*.test.ts"
+  ],
+  "include": [
+    "src/Locales/*.json"
   ]
 }
