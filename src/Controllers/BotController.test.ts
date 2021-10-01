@@ -1,4 +1,4 @@
-import {getTestContext} from '../mocks/context';
+import {getTestContext} from '../Mocks/context';
 import {BotController} from './BotController';
 
 jest.mock('winston');
