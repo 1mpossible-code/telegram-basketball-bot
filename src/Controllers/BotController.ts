@@ -8,9 +8,9 @@ export class BotController {
     private state: BotState;
     private static instance: BotController;
 
-    public pendingState: BotState;
-    public enterState: BotState;
-    public gameState: BotState;
+    public readonly pendingState: BotState;
+    public readonly enterState: BotState;
+    public readonly gameState: BotState;
 
     private constructor() {
         this.pendingState = new BotPending(this);
