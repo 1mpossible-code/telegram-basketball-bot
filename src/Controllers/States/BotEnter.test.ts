@@ -24,6 +24,13 @@ describe('test BotEnter state', () => {
         expect(ctx.reply).toBeCalledWith('BotEnter');
     });
 
+    it('should not throw error when startCommandHandler is called', () => {
+        ctx.reply = jest.fn().mockRejectedValueOnce(Error);
+        state.startCommandHandler(ctx);
+
+        expect(ctx.reply).not.toThrow(Error);
+    });
+
     it('should test diceHandler method', () => {
         state.diceHandler(ctx);
         expect(logger.info).toBeCalledWith(
