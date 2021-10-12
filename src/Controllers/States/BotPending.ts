@@ -17,7 +17,7 @@ export class BotPending implements BotState {
             'If you want to play, just click "Join" button',
             PendingService.getStartCommandMarkup()
         ).catch((e) => logger.error(e));
-        this._controller.changeState(this._controller.gameState);
+        this._controller.changeState(this._controller.enterState);
     }
 
     diceHandler(ctx: Context): void {

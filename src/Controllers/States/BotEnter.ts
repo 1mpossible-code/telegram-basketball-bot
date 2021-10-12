@@ -24,7 +24,8 @@ export class BotEnter implements BotState {
     }
 
     exitCommandHandler(ctx: Context): void {
-        logger.info('Exit command handler');
+        logger.debug('Called "exitCommandHandler" method in BotEnter file');
+        this._controller.changeState(this._controller.pendingState);
     }
 
     callbackQueryHandler(ctx: Context): void {
