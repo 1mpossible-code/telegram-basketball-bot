@@ -54,4 +54,8 @@ export class BotController {
     public changeState(state: BotState): void {
         this.state = state;
     }
+
+    public getCurrentState(): BotState {
+        return this.state;
+    }
 }

@@ -30,6 +30,7 @@ const mTransports = {
     File: jest.fn(),
 };
 const mLogger = {
+    debug: jest.fn(),
     info: jest.fn(),
     error: jest.fn(),
 };

@@ -45,7 +45,13 @@ describe('test BotEnter state', () => {
 
     it('should test exitCommandHandler method', () => {
         state.exitCommandHandler(ctx);
-        expect(logger.info).toBeCalledWith('Exit command handler');
+        expect(logger.debug).toBeCalledWith(
+            'Called "exitCommandHandler" method in BotEnter file'
+        );
+
+        expect(BotController.getInstance().getCurrentState()).toEqual(
+            BotController.getInstance().pendingState
+        );
     });
 
     it('should test callbackQueryHandler method', () => {

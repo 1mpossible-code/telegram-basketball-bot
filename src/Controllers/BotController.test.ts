@@ -34,6 +34,13 @@ describe('test BotController', () => {
         expect(mockedState.startCommandHandler).toBeCalledWith(ctx);
     });
 
+    it('should return current state when getCurrentState is called', () => {
+        BotController.getInstance().changeState(mockedState);
+        expect(BotController.getInstance().getCurrentState()).toEqual(
+            mockedState
+        );
+    });
+
     it('should call state diceHandler', () => {
         // Change state to mocked one
         mockedState.diceHandler = jest.fn();
